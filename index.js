@@ -33,10 +33,10 @@ class Sprite {
         c.fillRect(this.position.x,this.position.y, this.width, this.height)
 
         /*attack box*/
-        //if (this.isAttacking){
+        if (this.isAttacking){
           c.fillStyle = 'green'
           c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width,this.attackBox.height)
-        //}
+        }
     }
 
     update() {
@@ -153,6 +153,16 @@ function animate() {
          player.isAttacking = false
          console.log('go')
     }
+    if(
+      rectanfularCollision ({
+        rectangle1:enemy,
+        rectangle2: player
+      })&&
+       enemy.isAttacking
+      ){
+       enemy.isAttacking = false
+       console.log('enemy attact successful')
+  }
 }
 
 animate()
@@ -185,6 +195,9 @@ window.addEventListener('keydown', (event) => {
     break
     case 'ArrowUp':
     enemy.velocity.y = -20
+    break
+    case 'ArrowDown':
+    enemy.isAttacking = true
     break
 
    
