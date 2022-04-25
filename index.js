@@ -96,6 +96,7 @@ function animate() {
     }
 
     /*enemy movement */
+    enemy.velocity.x = 0
     if (keys.ArrowLeft.pressed && enemy.lastKey == 'ArrowLeft') {
       enemy.velocity.x = -1
     }else if (keys.ArrowRight.pressed && enemy.lastKey == 'ArrowRight') {
@@ -132,6 +133,8 @@ window.addEventListener('keydown', (event) => {
     case 'ArrowUp':
     enemy.velocity.y = -10
     break
+
+   
   }
   console.log(event.key);
 })
@@ -151,8 +154,11 @@ window.addEventListener('keyup', (event) => {
     case 'ArrowRight':
       keys.ArrowRight.pressed = false
       break
-    case 'ArrowLeft':
+      case 'ArrowLeft':
       keys.ArrowLeft.pressed = false
+      break
+      case 'ArrowUp':
+      keys.ArrowUp.pressed = false
       break
   }
   console.log(event.key);
